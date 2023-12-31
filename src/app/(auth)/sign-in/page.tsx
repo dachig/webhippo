@@ -79,6 +79,7 @@ const Page = () => {
                     </div>
 
                     <div className="grid gap-6 ">
+                        {/*@ts-ignore */}
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="grid gap-2">
                                 <div className="grid gap-2 py-2">
