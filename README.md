@@ -34,3 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+setting up an own server: (needed files) ---follow comments in each files---
+---in src folder---
+-   server.ts first
+-   get-payload.ts second
+-   next-utils.ts third
+-   payload.config.ts
+--- in root---
+-   .env copy paste environment variables
+-   nodemon.json sixth
+-   tsconfig.server.json seventh
+
+
+creating authentication
+---in app folder---
+-   sign-up foler --> page.tsx //npm add react-hook-form @hookform/resolvers zod sonner --> for form validation
+-   accounts-credentials-validator in app/lib --> good practise to seperate so you can use it also on server-side 
+-   TRPC SETUP:
+    -   npm add @trpc/client @trpc/next @trpc/react-query @trpc/server @tanstack/react-query (npm add @tanstack/react-query@4.36.1 if latest version isn't compatible)
+    -   navigate to components and create Providers.tsx file ---follow steps there---
+    -   make api folder --> trpc folder --> [trpc] folder --> route.ts in app folder
+    -   make collections folder --> Users.ts in app folder and after that adjust package.json with this: "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types", under "dev" and run "npm run generate:types"
+    -   npm i nodemailer to setup account sign up with verification mail. setup happens in get-payload.ts file
